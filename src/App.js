@@ -11,7 +11,7 @@ function App() {
   }, []);
 
   const refreshList = () => {
-    axios.get("http://localhost:8000/api/todos/")
+    axios.get(("https://todo-f93l.onrender.com/api/todos"))
       .then((res) => setTodoList(res.data))
       .catch((err) => console.log(err));
   };
@@ -19,7 +19,7 @@ function App() {
   // (Create)
   const handleSubmit = () => {
     if (title === "") return alert("Please enter a task!");
-    axios.post("http://localhost:8000/api/todos/", { title, completed: false })
+    axios.post(("https://todo-f93l.onrender.com/api/todos"), { title, completed: false })
       .then(() => {
         setTitle("");
         refreshList();
@@ -28,12 +28,12 @@ function App() {
 
   //  (Delete)
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:8000/api/todos/${id}/`).then(() => refreshList());
+    axios.delete(`("https://todo-f93l.onrender.com/api/todos")${id}/`).then(() => refreshList());
   };
 
   // (Update)
   const toggleComplete = (item) => {
-    axios.put(`http://localhost:8000/api/todos/${item.id}/`, { ...item, completed: !item.completed })
+    axios.put(`("https://todo-f93l.onrender.com/api/todos")${item.id}/`, { ...item, completed: !item.completed })
       .then(() => refreshList());
   };
 
